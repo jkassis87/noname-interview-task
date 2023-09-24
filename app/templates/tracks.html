@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chinook Tracks List </title>
+</head>
+<body>
+    <h1>Chinook Tracks</h1>
+    <ul>
+        {% for track in tracks %}
+            <li>{{ track[1] }} - {{ track[2] }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
