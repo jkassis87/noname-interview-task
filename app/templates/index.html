@@ -6,21 +6,23 @@
 <body>
     <h1>This is the Chinook Music Database</h1>
     <p></p>
-    <h2>List of avalable pages</h2><br />
-    /tracks<br />
-    # lists all songs in the database
-    <p></p>
-    <h2>List of API endpoints</h2><br />
-    /api/tracks <br />
-    # GET requests all songs in the database <br />
-    <br>
-    /api/tracks/TrackID <br />
-    # GET requests an individual track, eg: /api/tracks/1
-    <p></p>
-    <ul>
-        {% for track in tracks %}
-            <li>{{ track[1] }} - {{ track[2] }}</li>
-        {% endfor %}
-    </ul>
+    <h2>API Guide</h2>
+    <p><strong>GET All Tracks</strong><br />
+    curl -X GET https//nns.jkassis.net:5000/api/tracks</p>
+
+    <p><strong>GET a Specific Track</strong><br />
+    curl -X GET https://nns.jkassis.net:5000/api/tracks/1</p>
+
+    <p><strong>POST Create a New Track</strong><br />
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;Name&quot;: &quot;New Track&quot;, &quot;AlbumId&quot;: 12345, &quot;MediaTypeId&quot;: 3}&#39; https://nns.jkassis.net:5000/api/tracks</p>
+
+    <p><strong>PUT Update a Track</strong><br />
+    curl -X PUT -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;Name&quot;: &quot;Updated Track Name&quot;, &quot;AlbumId&quot;: 3, &quot;MediaTypeId&quot;: 2}&#39; https://nns.jkassis.net:5000/api/tracks/1</p>
+
+    <p><strong>DELETE Delete a Track</strong><br />
+    curl -X DELETE https://nns.jkassis.net:5000/api/tracks/1</p>
+
+<p>&nbsp;</p>
+    
 </body>
 </html>
