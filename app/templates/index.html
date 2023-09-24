@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chinook Database</title>
+</head>
+<body>
+    <h1>This is the Chinook Music Database</h1>
+    <p></p>
+    <h2>List of avalable pages</h2><br />
+    /tracks<br />
+    # lists all songs in the database
+    <p></p>
+    <h2>List of API endpoints</h2><br />
+    /api/tracks <br />
+    # GET requests all songs in the database <br />
+    <br>
+    /api/tracks/TrackID <br />
+    # GET requests an individual track, eg: /api/tracks/1
+    <p></p>
+    <ul>
+        {% for track in tracks %}
+            <li>{{ track[1] }} - {{ track[2] }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
