@@ -1,2 +1,4 @@
-flask
-sqlite3
+Flask
+Jinja2
+uWSGI
+Werkzeug
