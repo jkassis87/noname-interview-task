@@ -13,6 +13,8 @@ RUN apt-get -y install nginx \
 
 RUN pip3 install -r requirements.txt --src /usr/local/src
 
+EXPOSE 80
+
 COPY nginx.conf /etc/nginx
 
 RUN chmod +x ./start.sh
