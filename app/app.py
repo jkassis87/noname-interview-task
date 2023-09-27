@@ -21,6 +21,34 @@ def dict_factory(cursor, row):
 def index():
     return render_template('index.html')
 
+
+# route to get all tracks
+@app.route('/api/tracks/all', methods=['GET'])
+def get_tracks():
+    conn = connect_db()
+    conn.row_factory = dict_factory
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM tracks")
+    tracks = cursor.fetchall()
+    conn.close()
+    return jsonify(tracks)
+
+@app.route('/api/tracks/search')
+def search_tracks():
+    query = request.args.get('query', '')
+
+    if not query:
+        return jsonify({"error": "Please provide a search query"}), 400
+
+    conn = connect_db()
+    conn.row_factory = dict_factory
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM tracks WHERE Name LIKE ?", ('%' + query + '%',))
+    tracks = cursor.fetchall()
+    conn.close()
+
+    return jsonify(tracks)
+
 # Read a specific track (GET endpoint)
 @app.route('/api/tracks/<int:track_id>', methods=['GET'])
 def get_track(track_id):
