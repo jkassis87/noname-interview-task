@@ -11,8 +11,11 @@ provider "vultr" {
   api_key = var.api_key
 }
 
+
+# provisions 3x 1vCPU compute instances with Ubuntu 20.04
+
 resource "vultr_instance" "ubuntu_server" {
-  count = 2
+  count = 3
 
   plan        = "vc2-1c-1gb"  
   region       = "syd"         

@@ -8,19 +8,19 @@
     <p></p>
     <h2>API Guide</h2>
     <p><strong>GET All Tracks</strong><br />
-    curl -X GET http://nns.jkassis.net/tracks/all</p>
+    curl -X GET http://nns.jkassis.net:8000/tracks/all</p>
 
     <p><strong>GET a Specific Track</strong><br />
-    curl -X GET http://nns.jkassis.net/tracks/1</p>
+    curl -X GET http://nns.jkassis.net:8000/tracks/1</p>
 
     <p><strong>GET search the database</strong><br />
-    curl -X GET http://nns.jkassis.net/tracks/search?query=STRING</p>
+    curl -X GET http://nns.jkassis.net:8000/tracks/search?query=STRING</p>
 
     <p><strong>POST Create a New Track</strong><br />
-    curl -X POST -H "Content-Type: application/json" -d '{"Name": "New Track", "AlbumId": 2, "MediaTypeId": 1}' http://nns.jkassis.net/api/tracks</p>
+    curl -X POST -H "Content-Type: application/json" -d '{"Name": "New Track", "AlbumId": 2, "MediaTypeId": 1}' http://nns.jkassis.net:8000/api/tracks</p>
 
     <p><strong>PUT Update a Track</strong><br />
-    curl -X PUT -H "Content-Type: application/json" -d '{"Name": "Updated Track Name", "AlbumId": 3, "MediaTypeId": 2}' http://nns.jkassis.net/api/tracks/1</p>
+    curl -X PUT -H "Content-Type: application/json" -d '{"Name": "Updated Track Name", "AlbumId": 3, "MediaTypeId": 2}' http://nns.jkassis.net:8000/api/tracks/1</p>
 
     <p><strong>DELETE Delete a Track</strong><br />
     curl -X DELETE http://nns.jkassis.net0/api/tracks/1</p>
