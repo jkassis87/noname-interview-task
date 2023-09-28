@@ -5,7 +5,7 @@ import logging
 app = Flask(__name__)
 
 # Set up logging
-logging.basicConfig(filename='error.log', level=logging.ERROR)
+logging.basicConfig(filename='flaskerror.log', level=logging.ERROR)
 @app.errorhandler(Exception)
 def handle_exception(e):
     
