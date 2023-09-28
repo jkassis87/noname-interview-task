@@ -1,7 +1,17 @@
 from flask import Flask, render_template, request, jsonify
 import sqlite3
+import logging
 
 app = Flask(__name__)
+
+# Set up logging
+logging.basicConfig(filename='error.log', level=logging.ERROR)
+@app.errorhandler(Exception)
+def handle_exception(e):
+    
+    logging.error(f"Exception occurred: {str(e)}", exc_info=True)
+
+    return "Internal Server Error", 500
 
 # SQLite database connection
 DATABASE = 'chinook.db'
@@ -16,7 +26,7 @@ def dict_factory(cursor, row):
         d[col[0]] = row[idx]
     return d
 
-# App route for index page
+# route for index page
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -33,6 +43,7 @@ def get_tracks():
     conn.close()
     return jsonify(tracks)
 
+# route to search any string
 @app.route('/api/tracks/search')
 def search_tracks():
     query = request.args.get('query', '')
@@ -131,6 +142,9 @@ def delete_track(track_id):
     conn.close()
 
     return jsonify({"message": "Track deleted successfully"})
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
